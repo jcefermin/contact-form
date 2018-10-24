@@ -76,8 +76,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script type="text/javascript">
       jQuery("form").submit(function (e) {
-        e.preventDefault();
-
         var error = "";
 
         if(jQuery("#email").val() == "") {
@@ -94,8 +92,9 @@
         
         if(error != "") {
           jQuery("#error").html('<div class="alert alert-danger" role="alert"><p><strong>There were error(s) in your form:</strong><br/>' + error + '</div>');
+          return false;
         }else {
-          jQuery("form").unbind("submit").submit();
+          return true;
         }
       })
     </script>
